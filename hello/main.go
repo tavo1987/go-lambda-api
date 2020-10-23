@@ -4,26 +4,20 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"fmt"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
-// Response is of type APIGatewayProxyResponse since we're leveraging the
-// AWS Lambda Proxy Request functionality (default behavior)
-//
-// https://serverless.com/framework/docs/providers/aws/events/apigateway/#lambda-proxy-integration
+// Response is alias for APIGatewayProxyResponse
 type Response events.APIGatewayProxyResponse
 
-// Handler is our lambda handler invoked by the `lambda.Start` function call
+// Handler function
 func Handler(ctx context.Context, event events.APIGatewayProxyRequest) (Response, error) {
 	var buf bytes.Buffer
 
-	fmt.Printf("Body %v", event.Body)
-
 	body, err := json.Marshal(map[string]interface{}{
-		"message": "go desde serverless evaluar!",
+		"message": "Hola Segovia desde go!",
 		"input":   event,
 	})
 	if err != nil {
