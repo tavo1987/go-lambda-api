@@ -23,7 +23,7 @@ func Handler(ctx context.Context, event events.APIGatewayProxyRequest) (Response
 	fmt.Printf("Body %v", event.Body)
 
 	body, err := json.Marshal(map[string]interface{}{
-		"message": "Go Serverless v1.0! Your function executed successfully!",
+		"message": "go desde serverless evaluar!",
 		"input":   event,
 	})
 	if err != nil {
